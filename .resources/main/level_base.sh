@@ -22,15 +22,6 @@ if [[ "$rank" == "rank02" ]]; then
         echo "Invalid level: $level for rank02"
         exit 1
     fi
-elif [[ "$rank" == "rank03" ]]; then
-    if [[ "$level" == *"level1"* ]]; then
-        qsub=(broken_gnl filter scanf)
-    elif [[ "$level" == *"level2"* ]]; then
-        qsub=(n_queens permutations powerset rip tsp)
-    else
-        echo "Invalid level: $level for rank03"
-        exit 1
-    fi
 else
     echo "Invalid rank: $rank"
     exit 1
