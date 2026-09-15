@@ -3,6 +3,8 @@
 i tried updating rank 03 from c to python but lowk idk which exercises go in what level so uhh practice mode is just choose 1 question out of the 17 (known) questions
 & exam mode is just pass 6 questions to get it right
 
+ofc this is a fork of the other examshell + added in the questions from this repo https://github.com/sergioromero2k/42_Exam_Ranks
+
 ⚡ An interactive practice environment for 42 School exams (Ranks 02-03) ⚡
 
 ## 📋 Overview
