@@ -5,6 +5,43 @@ source colors.sh
 source cleanup.sh
 trap cleanup_exam_files INT TERM
 
+QUESTIONS=(
+    alternate_case
+    atoi
+    brackets
+    capitalize_words
+    convert_base
+    customSortString
+    merge_and_sort_desc
+    mirror_matrix
+    mirror_matrix_vertical
+    py_echo_validator
+    py_pattern_tracker
+    rotate_90
+    sorted
+    topKFrequent
+    twoSum
+    valid_anagram
+    whisper_lipher
+)
+
+run_practice_questions() {
+    local start_index=$1
+    local index
+    local status
+
+    for ((index = start_index; index < ${#QUESTIONS[@]}; index++)); do
+        bash rank03_base.sh "${QUESTIONS[$index]}"
+        status=$?
+
+        if [ "$status" -ne 2 ]; then
+            return "$status"
+        fi
+    done
+
+    bash rank03_menu.sh
+}
+
 clear
 
 bash label.sh
@@ -44,56 +81,8 @@ case $opt in
         bash rank03_menu.sh
         ;;
 
-    1)
-        bash rank03_base.sh alternate_case
-        ;;
-    2)
-        bash rank03_base.sh atoi
-        ;;
-    3)
-        bash rank03_base.sh brackets
-        ;;
-    4)
-        bash rank03_base.sh capitalize_words
-        ;;
-    5)
-        bash rank03_base.sh convert_base
-        ;;
-    6)
-        bash rank03_base.sh customSortString
-        ;;
-    7)
-        bash rank03_base.sh merge_and_sort_desc
-        ;;
-    8)
-        bash rank03_base.sh mirror_matrix
-        ;;
-    9)
-        bash rank03_base.sh mirror_matrix_vertical
-        ;;
-    10)
-        bash rank03_base.sh py_echo_validator
-        ;;
-    11)
-        bash rank03_base.sh py_pattern_tracker
-        ;;
-    12)
-        bash rank03_base.sh rotate_90
-        ;;
-    13)
-        bash rank03_base.sh sorted
-        ;;
-    14)
-        bash rank03_base.sh topKFrequent
-        ;;
-    15)
-        bash rank03_base.sh twoSum
-        ;;
-    16)
-        bash rank03_base.sh valid_anagram
-        ;;
-    17)
-        bash rank03_base.sh whisper_lipher
+    1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17)
+        run_practice_questions "$((opt - 1))"
         ;;
 
     exit)

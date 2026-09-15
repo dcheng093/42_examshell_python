@@ -43,7 +43,7 @@ while true; do
             read -r -p "Press Enter to continue." enter
             ;;
         next)
-            exit 0
+            exit 2
             ;;
         menu)
             cd "$base_dir/../../" || exit 1

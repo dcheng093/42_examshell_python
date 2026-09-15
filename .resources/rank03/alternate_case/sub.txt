@@ -17,7 +17,7 @@ count for alternation.
 
 Examples:
 
-alternate_case("hello world")       → "HeLlO WoRlD"
+alternate_case("hello world")       → "HeLlO wOrLd"
 alternate_case("42madrid")          → "42MaDrId"
 alternate_case("python3.9 rocks!")  → "PyThOn3.9 RoCkS!"
 alternate_case("a!b?c")             → "A!b?C"
