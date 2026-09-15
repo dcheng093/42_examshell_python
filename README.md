@@ -1,6 +1,9 @@
 # 42 Exam Practice Shell
 
-⚡ An interactive practice environment for 42 School exams (Ranks 02-06) ⚡
+i tried updating rank 03 from c to python but lowk idk which exercises go in what level so uhh practice mode is just choose 1 question out of the 17 (known) questions
+& exam mode is just pass 6 questions to get it right
+
+⚡ An interactive practice environment for 42 School exams (Ranks 02-03) ⚡
 
 ## 📋 Overview
 
@@ -9,7 +12,7 @@ This project provides a comprehensive practice shell for 42 School examinations,
 ## 🚀 Features
 
 - **Interactive Menu System**: Clean, colorful terminal interface
-- **Multiple Exam Ranks**: Support for Ranks 02, 03, 04, 05 and 06
+- **Multiple Exam Ranks**: Support for Ranks 02, 03
 - **Practice Environment**: Dedicated workspace (`rendu` folder) for submissions
 - **Command Practice**: Built-in command reference and practice
 - **Easy Navigation**: Simple numbered menu system
@@ -25,9 +28,6 @@ This project provides a comprehensive practice shell for 42 School examinations,
     ├── main/         # Main menu and interface
     ├── rank02/       # Rank 02 exam exercises
     ├── rank03/       # Rank 03 exam exercises
-    ├── rank04/       # Rank 04 exam exercises
-    ├── rank05/       # Rank 05 exam exercises
-    └── rank06/       # Rank 06 exam exercises
 ```
 
 ## 🔧 Installation & Usage
@@ -56,11 +56,8 @@ The main menu provides the following options:
 - **🔄 1. Commands**: Access command reference and practice
 - **🚀 2. Exam Rank 02**: Practice exercises for Rank 02 exam
 - **📋 3. Exam Rank 03**: Practice exercises for Rank 03 exam  
-- **📄 4. Exam Rank 04**: Practice exercises for Rank 04 exam
-- **📄 5. Exam Rank 05**: Practice exercises for Rank 05 exam
-- **📄 6. Exam Rank 06**: Practice exercises for Rank 06 exam
-- **📁 7. Open Rendu Folder**: Access your submission workspace
-- **🔄 8. Update Shell**: Keep your exam shell up-to-date with latest features
+- **📁 4. Open Rendu Folder**: Access your submission workspace
+- **🔄 5. Update Shell**: Keep your exam shell up-to-date with latest features
 
 ## 💡 How to Use
 
@@ -116,10 +113,7 @@ The project includes update mechanisms to keep practice materials current with t
 ## 📚 Exam Ranks Covered
 
 - **Rank 02**: Fundamental C programming concepts
-- **Rank 03**: Advanced C programming and system calls
-- **Rank 04**: Complex algorithms and data structures
-- **Rank 05**: Advanced C++ programming and object-oriented design
-- **Rank 06**: Advanced system programming (mini_db, mini_serv)
+- **Rank 03**: Fundamental Python concepts
 
 ## 🤝 Contributing
 
