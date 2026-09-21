@@ -20,9 +20,6 @@ def load_candidate(question, path):
 test_number = 0
 
 
-test_number = 0
-
-
 def check(description, result, expected=None, errors=None):
     global test_number
     test_number += 1
@@ -1077,21 +1074,21 @@ def test_custom_sort(module):
 
         if result != expected:
             errors.append(
-                f"wrong result\n"
+                f"\nwrong result\n"
                 f"       Expected: {expected!r}\n"
                 f"       Got:      {result!r}"
             )
 
         if arr != original:
             errors.append(
-                f"original list was modified\n"
+                f"\noriginal list was modified\n"
                 f"       Original: {original!r}\n"
                 f"       Got:      {arr!r}"
             )
 
         if result is arr:
             errors.append(
-                "function returned the original list object"
+                "\nfunction returned the original list object"
             )
 
         check(
@@ -1246,10 +1243,44 @@ def test_merge_and_sort_desc(module):
 
         result = module.merge_and_sort_desc(first, second)
 
+        errors = []
+
+        if result != expected:
+            errors.append(
+                f"\nwrong result\n"
+                f"       Expected: {expected!r}\n"
+                f"       Got:      {result!r}"
+            )
+
+        if first != first_original:
+            errors.append(
+                f"\nfirst list was modified\n"
+                f"       Original: {first_original!r}\n"
+                f"       Got:      {first!r}"
+            )
+
+        if second != second_original:
+            errors.append(
+                f"\nsecond list was modified\n"
+                f"       Original: {second_original!r}\n"
+                f"       Got:      {second!r}"
+            )
+
+        if result is first:
+            errors.append(
+                "\nfunction returned the first input list"
+            )
+
+        if result is second:
+            errors.append(
+                "\nfunction returned the second input list"
+            )
+
         check(
             f"merge_and_sort_desc({first_original!r}, {second_original!r})",
-            (result, first, second),
-            (expected, first_original, second_original),
+            not errors,
+            True,
+            errors,
         )
 
 
@@ -1521,10 +1552,32 @@ def test_mirror_matrix(module):
 
         result = module.mirror_matrix(value)
 
+        errors = []
+
+        if result != expected:
+            errors.append(
+                f"\nwrong result\n"
+                f"       Expected: {expected!r}\n"
+                f"       Got:      {result!r}"
+            )
+
+        if value != original:
+            errors.append(
+                f"\noriginal matrix was modified\n"
+                f"       Original: {original!r}\n"
+                f"       Got:      {value!r}"
+            )
+
+        if result is value:
+            errors.append(
+                "\nfunction returned the original matrix object"
+            )
+
         check(
             f"mirror_matrix({value!r})",
-            (result, value),
-            (expected, original),
+            not errors,
+            True,
+            errors,
         )
 
 
@@ -1716,12 +1769,35 @@ def test_mirror_matrix_vertical(module):
 
     for value, expected in cases:
         original = [row[:] for row in value]
+
         result = module.mirror_matrix_vertical(value)
 
+        errors = []
+
+        if result != expected:
+            errors.append(
+                f"\nwrong result\n"
+                f"       Expected: {expected!r}\n"
+                f"       Got:      {result!r}"
+            )
+
+        if value != original:
+            errors.append(
+                f"\noriginal matrix was modified\n"
+                f"       Original: {original!r}\n"
+                f"       Got:      {value!r}"
+            )
+
+        if result is value:
+            errors.append(
+                "\nfunction returned the original matrix object"
+            )
+
         check(
-            f"mirror_matrix({value!r})",
-            (result, value),
-            (expected, original),
+            f"mirror_matrix_vertical({value!r})",
+            not errors,
+            True,
+            errors,
         )
 
 

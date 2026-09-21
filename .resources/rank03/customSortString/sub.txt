@@ -1,5 +1,6 @@
-Assignment name  : customSortString
-Expected files   : customSortString.py
+Assignment name      : customSortString
+Expected files       : customSortString.py
+Forbidden functions  : sort/sorted          (idk if this is right but it seems way too easy)
 --------------------------------------------------------------------------------
 
 Write a function:
