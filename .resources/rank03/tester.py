@@ -2,6 +2,7 @@ import contextlib
 import importlib.util
 import io
 import runpy
+import inspect
 import sys
 from collections import Counter
 
@@ -19,7 +20,10 @@ def load_candidate(question, path):
 test_number = 0
 
 
-def check(description, result, expected=None):
+test_number = 0
+
+
+def check(description, result, expected=None, errors=None):
     global test_number
     test_number += 1
 
@@ -32,9 +36,11 @@ def check(description, result, expected=None):
         print(f"test {test_number} || {description}: PASS")
     else:
         print(f"test {test_number} || {description}: FAIL")
-        if expected is not None:
-            print(f"       Expected: {expected!r}")
-            print(f"       Got:      {result!r}")
+
+        if errors:
+            for error in errors:
+                print(f"       {error}")
+
         raise SystemExit(1)
 
 
@@ -933,6 +939,11 @@ def test_convert_base(module):
 
 
 def test_custom_sort(module):
+    source = inspect.getsource(module.custom_sort)
+
+    if ".sort(" in source or "sorted(" in source:
+        print("FAIL: sort() and sorted() are not allowed")
+        raise SystemExit(1)
     cases = [
         # basic cases
         ([], []),
@@ -1060,10 +1071,32 @@ def test_custom_sort(module):
         original = arr[:]
         result = module.custom_sort(arr)
 
+        errors = []
+
+        if result != expected:
+            errors.append(
+                f"wrong result\n"
+                f"       Expected: {expected!r}\n"
+                f"       Got:      {result!r}"
+            )
+
+        if arr != original:
+            errors.append(
+                f"original list was modified\n"
+                f"       Original: {original!r}\n"
+                f"       Got:      {arr!r}"
+            )
+
+        if result is arr:
+            errors.append(
+                "function returned the original list object"
+            )
+
         check(
             f"custom_sort({arr!r})",
-            (result, arr),
-            (expected, original),
+            not errors,
+            True,
+            errors,
         )
 
 
