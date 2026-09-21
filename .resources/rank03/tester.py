@@ -16,10 +16,26 @@ def load_candidate(question, path):
     return module
 
 
-def check(name, condition):
-    if not condition:
-        raise AssertionError(f"{name}: unexpected result")
-    print(f"{name}: PASS")
+test_number = 0
+
+
+def check(description, result, expected=None):
+    global test_number
+    test_number += 1
+
+    if expected is None:
+        passed = result
+    else:
+        passed = result == expected
+
+    if passed:
+        print(f"test {test_number} || {description}: PASS")
+    else:
+        print(f"test {test_number} || {description}: FAIL")
+        if expected is not None:
+            print(f"       Expected: {expected!r}")
+            print(f"       Got:      {result!r}")
+        raise SystemExit(1)
 
 
 def test_alternate_case(module):
@@ -41,8 +57,8 @@ def test_alternate_case(module):
         ("hello python", "HeLlO pYtHoN"),
         ("good morning", "GoOd MoRnInG"),
         ("good night", "GoOd NiGhT"),
-        ("test case", "TeSt case"),
-        ("alternate case", "AlTeRnAtE case"),
+        ("test case", "TeSt CaSe"),
+        ("alternate case", "AlTeRnAtE cAsE"),
         ("hello there friend", "HeLlO tHeRe FrIeNd"),
         ("this is a test", "ThIs Is A tEsT"),
         ("python is fun", "PyThOn Is FuN"),
@@ -112,7 +128,7 @@ def test_alternate_case(module):
         ("hello123world", "HeLlO123wOrLd"),
         ("abc123def", "AbC123dEf"),
         ("12hello34", "12HeLlO34"),
-        ("test123case", "TeSt123case"),
+        ("test123case", "TeSt123CaSe"),
         ("123test456", "123TeSt456"),
 
         # punctuation
@@ -217,7 +233,8 @@ def test_alternate_case(module):
         result = module.alternate_case(value)
         check(
             f"alternate_case({value!r})",
-            result == expected
+            result,
+            expected
         )
 
 
@@ -384,7 +401,8 @@ def test_atoi(module):
         result = module.atoi(value)
         check(
             f"atoi({value!r})",
-            result == expected
+            result,
+            expected
         )
 
 
@@ -563,7 +581,8 @@ def test_brackets(module):
         result = module.brackets(value)
         check(
             f"brackets({value!r})",
-            result == expected
+            result,
+            expected
         )
 
 
@@ -587,9 +606,9 @@ def test_capitalize_words(module):
         ("hELLO", "Hello"),
         ("HeLLo", "Hello"),
         ("HELLo WoRLD", "Hello World"),
-        ("mIXED case", "Mixed case"),
+        ("mIXED case", "Mixed Case"),
         ("PyThOn PrOgRaMmInG", "Python Programming"),
-        ("tEST case", "Test case"),
+        ("tEST case", "Test Case"),
         ("aBcDeF", "Abcdef"),
         ("ABC DEF GHI", "Abc Def Ghi"),
 
@@ -734,7 +753,8 @@ def test_capitalize_words(module):
 
         check(
             f"capitalize_words({value!r})",
-            result == expected
+            result,
+            expected
         )
 
 
@@ -903,10 +923,12 @@ def test_convert_base(module):
         with contextlib.redirect_stdout(output):
             result = module.convert_base(*args)
 
+        actual = output.getvalue().strip()
+
         check(
             f"convert_base{args}",
-            output.getvalue().strip() == expected
-            and result is None,
+            (actual, result),
+            (expected, None),
         )
 
 
@@ -1039,8 +1061,9 @@ def test_custom_sort(module):
         result = module.custom_sort(arr)
 
         check(
-            "customSort",
-            result == expected and arr == original
+            f"custom_sort({arr!r})",
+            (result, arr),
+            (expected, original),
         )
 
 
@@ -1183,16 +1206,15 @@ def test_merge_and_sort_desc(module):
     ]
 
     for first, second, expected in cases:
-        first_original = first.copy()
-        second_original = second.copy()
+        first_original = first[:]
+        second_original = second[:]
 
         result = module.merge_and_sort_desc(first, second)
 
         check(
             f"merge_and_sort_desc({first_original!r}, {second_original!r})",
-            result == expected
-            and first == first_original
-            and second == second_original,
+            (result, first, second),
+            (expected, first_original, second_original),
         )
 
 
@@ -1466,8 +1488,8 @@ def test_mirror_matrix(module):
 
         check(
             f"mirror_matrix({value!r})",
-            result == expected
-            and value == original,
+            (result, value),
+            (expected, original),
         )
 
 
@@ -1658,14 +1680,13 @@ def test_mirror_matrix_vertical(module):
     ]
 
     for value, expected in cases:
-        original = [row.copy() for row in value]
-
+        original = [row[:] for row in value]
         result = module.mirror_matrix_vertical(value)
 
         check(
-            f"mirror_matrix_vertical({value!r})",
-            result == expected
-            and value == original,
+            f"mirror_matrix({value!r})",
+            (result, value),
+            (expected, original),
         )
 
 
@@ -1820,7 +1841,8 @@ def test_py_echo_validator(module):
     for value, expected in cases:
         check(
             f"py_echo_validator({value!r})",
-            module.py_echo_validator(value) == expected,
+            module.py_echo_validator(value),
+            expected
         )
 
 
@@ -1945,7 +1967,8 @@ def test_py_pattern_tracker(module):
     for value, expected in cases:
         check(
             f"pattern_tracker({value!r})",
-            module.pattern_tracker(value) == expected,
+            module.pattern_tracker(value),
+            expected
         )
 
 
@@ -2085,8 +2108,8 @@ def test_rotate_90(module):
 
         check(
             f"rotate_90({value!r})",
-            result == expected
-            and value == original,
+            (result, value),
+            (expected, original),
         )
 
 
@@ -2099,7 +2122,12 @@ def test_sorted(path):
         "[('Ana', 8.5), ('Luis', 6.0)]",
         "[('Marta', 18), ('Ana', 20), ('Luis', 20)]",
     ]
-    check("sorted", output.getvalue().splitlines() == expected)
+    actual = output.getvalue().splitlines()
+    check(
+        "sorted",
+        actual,
+        expected,
+    )
 
 
 def test_top_k_frequent(module):
@@ -2306,13 +2334,23 @@ def test_two_sum(module):
     ]
 
     for nums, target, expected in cases:
-        result = module.twoSum(nums, target)
+        try:
+            result = module.twoSum(nums, target)
 
-        check(
-            f"twoSum({nums!r}, {target})",
-            len(result) == 2
-            and set(result) == set(expected),
-        )
+            check(
+                f"twoSum({nums!r}, {target})",
+                (len(result), set(result)),
+                (2, set(expected)),
+            )
+
+        except Exception as e:
+            print(
+                f"test {test_number + 1} || "
+                f"twoSum({nums!r}, {target}): FAIL"
+            )
+            print(f"       Expected: {expected!r}")
+            print(f"       Got:      {type(e).__name__}: {e}")
+            raise SystemExit(1)
 
 
 def test_valid_anagram(module):
@@ -2440,9 +2478,11 @@ def test_valid_anagram(module):
     ]
 
     for first, second, expected in cases:
+        result = module.valid_anagram(first, second)
         check(
             f"valid_anagram({first!r}, {second!r})",
-            module.valid_anagram(first, second) == expected,
+            result,
+            expected,
         )
 
 
@@ -2597,7 +2637,8 @@ def test_whisper_lipher(module):
     for text, shift, expected in cases:
         check(
             f"whisper_lipher({text!r}, {shift})",
-            module.whisper_lipher(text, shift) == expected,
+            module.whisper_lipher(text, shift),
+            expected
         )
 
 
