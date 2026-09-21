@@ -4,7 +4,7 @@ Expected files   : atoi.py
 
 Write a function:
 
-def atoi(s) -> int:
+def atoi(s: str) -> int:
 
 that converts a string to an integer without using int() or any built-in
 conversion function.
