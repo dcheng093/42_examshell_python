@@ -85,9 +85,6 @@ run_question() {
                 echo "$output" | tee tester_output.log
 
                 if echo "$output" | grep -q -E "PASSED|SUCCESS"; then
-                    echo
-                    echo -e "${GREEN}${BOLD}✔️ Passed!${RESET}"
-                    sleep 1
                     return 0
                 else
                     echo
