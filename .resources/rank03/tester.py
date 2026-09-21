@@ -1069,9 +1069,7 @@ def test_custom_sort(module):
     for arr, expected in cases:
         original = arr[:]
         result = module.custom_sort(arr)
-
         errors = []
-
         if result != expected:
             errors.append(
                 f"\nwrong result\n"
