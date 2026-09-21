@@ -95,6 +95,16 @@ run_question() {
                     echo
                     echo -e "${YELLOW}Your question is still active. Fix your code and try again.${RESET}"
                     echo
+
+                    read -rp "Press Enter to continue..."
+
+                    clear
+                    echo -e "${CYAN}${BOLD}Your subject: $question${RESET}"
+                    echo "=================================================="
+                    cat sub.txt
+                    echo
+                    echo "=================================================="
+                    echo -e "${YELLOW}Type 'test' to test your code, 'next' to get a new question, or 'exit' to quit.${RESET}"
                 fi
                 ;;
 
