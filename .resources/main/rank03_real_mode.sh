@@ -181,10 +181,10 @@ start_exam() {
     fi
 
     echo
-    read -rp "Press Enter to return to the Rank 03 menu..."
+    read -rp "Press Enter to return to the menu..."
 
     cd "$base_dir" || exit 1
-    bash rank03_menu.sh
+    bash menu.sh
 }
 
 start_exam

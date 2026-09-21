@@ -40,7 +40,9 @@ start_exam() {
     echo "$(tput setaf 2)$(tput bold)🎉 Congratulations! You've completed Rank02!$(tput sgr0)"
     echo "=================================================="
     echo "All levels passed successfully!"
-    sleep 3
+    echo
+    read -rp "Press Enter to return to the menu..."
+    bash menu.sh
 }
 
 start_exam
