@@ -36,6 +36,8 @@ def check(description, result, expected=None, errors=None):
         print(f"test {test_number} || {description}: PASS")
     else:
         print(f"test {test_number} || {description}: FAIL")
+        print(f"       || got:      {result!r}")
+        print(f"       || expected: {expected!r}")
 
         if errors:
             for error in errors:
