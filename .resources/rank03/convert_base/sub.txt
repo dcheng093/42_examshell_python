@@ -12,41 +12,20 @@ to_base.
 Requirements:
 
 Bases are in the range [2, 36].
-
 The function must print the result. Do not return it.
-
 The function must print "ERROR" if any error occurs.
 
 Examples:
 
-Input:
+Input: convert_base("ff", 16, 2)
+Output: 11111111
 
-convert_base("ff", 16, 2)
+Input: convert_base("10", 2, 10)
+Output: 2
 
-Output:
+Input: convert_base("z", 36, 10)
+Output: 35
 
-11111111
+Input: convert_base("1g", 16, 10)
 
-Input:
-
-convert_base("10", 2, 10)
-
-Output:
-
-2
-
-Input:
-
-convert_base("z", 36, 10)
-
-Output:
-
-35
-
-Input:
-
-convert_base("1g", 16, 10)
-
-Output:
-
-ERROR
+Output: ERROR
