@@ -1,5 +1,5 @@
 def twoSum(nums: list[int], target: int) -> list[int]:
-    seen: dict = {}
+    seen = {}
     for i, num in enumerate(nums):
         needed = target - num
         if needed in seen:

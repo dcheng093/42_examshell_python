@@ -1,6 +1,5 @@
 def rotate_90(matrix: list[list[int]]) -> list[list[int]]:
-    n = len(matrix)
-    return [[matrix[n - 1 - j][i] for j in range(n)] for i in range(n)]
+    return [[matrix[len(matrix) - 1 - j][i] for j in range(len(matrix))] for i in range(len(matrix))]
 
 
 def main() -> None:
