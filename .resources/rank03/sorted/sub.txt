@@ -6,9 +6,7 @@ This exercise is not a single function. It is a concept you must master.
 
 You will be asked to sort lists of strings, tuples, or objects by a custom
 criterion using sorted() with a key=lambda argument.
-
 No external libraries are allowed.
-
 You must be able to sort by length, by a specific field, in reverse order,
 or by multiple criteria at once.
 
