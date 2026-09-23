@@ -12,9 +12,7 @@ word is converted to uppercase and the rest remain lowercase.
 Rules:
 
 Words are sequences of characters separated by spaces.
-
 Preserve multiple spaces or punctuation exactly as in the original string.
-
 Only alphabetic characters are affected; numbers and symbols remain unchanged.
 
 Examples:

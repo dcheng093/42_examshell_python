@@ -7,11 +7,8 @@ Write a function:
 def alternate_case(s: str) -> str:
 
 Returns a new string where the first alphabetic character is uppercase.
-
 The second alphabetic character is lowercase.
-
 This alternates for all letters.
-
 Non-alphabetic characters are preserved in their original positions and do not
 count for alternation.
 

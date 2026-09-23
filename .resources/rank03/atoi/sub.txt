@@ -8,7 +8,6 @@ def atoi(s: str) -> int:
 
 that converts a string to an integer without using int() or any built-in
 conversion function.
-
 The function must handle leading whitespace, an optional sign (+ or -), and
 stop parsing at the first non-digit character.
 
