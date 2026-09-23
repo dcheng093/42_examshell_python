@@ -27,5 +27,4 @@ Input: convert_base("z", 36, 10)
 Output: 35
 
 Input: convert_base("1g", 16, 10)
-
 Output: ERROR
