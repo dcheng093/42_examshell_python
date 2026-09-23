@@ -30,13 +30,13 @@ while true; do
     case "$input" in
         test)
             clear
-            timeout 10s ./tester.sh
+            timeout 5s ./tester.sh
             status=$?
             echo
             if [ "$status" -eq 0 ]; then
                 printf "${GREEN}${BOLD}Passed.${RESET}\n"
             elif [ "$status" -eq 124 ]; then
-                printf "${RED}${BOLD}Timed out.${RESET}\n"
+                printf "${RED}${BOLD}Timed out. It can be because of infinite loop ∞${RESET}\n"
             else
                 printf "${RED}${BOLD}Failed.${RESET}\n"
             fi
