@@ -34,7 +34,7 @@ while true; do
             status=$?
             echo
             if [ "$status" -eq 0 ]; then
-                printf "${GREEN}${BOLD}Passed.${RESET}\n"
+                printf "${GREEN}${BOLD}✔️  Passed!${RESET}\n"
             elif [ "$status" -eq 124 ]; then
                 printf "${RED}${BOLD}Timed out. It can be because of infinite loop ∞${RESET}\n"
             else

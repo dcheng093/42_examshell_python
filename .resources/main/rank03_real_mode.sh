@@ -159,12 +159,12 @@ start_exam() {
             score=$((score + 1))
 
             echo
-            echo "$(tput setaf 2)$(tput bold)✔ Question passed!$(tput sgr0)"
+            echo "$(tput setaf 2)$(tput bold)✔️ Question passed!$(tput sgr0)"
             echo "Current score: $score/$TOTAL_QUESTIONS"
 
         elif [ $result -eq 2 ]; then
             echo
-            echo "$(tput setaf 3)Question skipped.$(tput sgr0)"
+            echo "$(tput setaf 3)Question skipped... (disappointed in you)$(tput sgr0)"
             echo "Current score: $score/$TOTAL_QUESTIONS"
         fi
 
@@ -176,7 +176,7 @@ start_exam() {
     clear
 
     if [ $score -ge $TOTAL_QUESTIONS ]; then
-        echo "$(tput setaf 2)$(tput bold)🎉 Congratulations! You've passed Rank 03!$(tput sgr0)"
+        echo "$(tput setaf 2)$(tput bold)🎉 Congratulations! You've completed Rank 03!$(tput sgr0)"
         echo "=================================================="
         echo "Score: $score/$TOTAL_QUESTIONS"
     else
