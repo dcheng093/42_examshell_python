@@ -26,6 +26,12 @@ case $rank03_opt in
     3)
         bash intro.sh
         ;;
+    exit)
+        cd ../../../../
+        rm -rf rendu
+        clear
+        exit 0
+        ;;
     *)
         echo "Invalid choice. Please enter 1 or 2."
         sleep 1

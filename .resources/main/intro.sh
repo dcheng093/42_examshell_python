@@ -45,7 +45,7 @@ case $opt in
         cd ../../../../
         rm -rf rendu
         clear
-        exit 1
+        exit 0
         ;;
     
     *)
